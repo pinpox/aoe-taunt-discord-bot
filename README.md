@@ -2,11 +2,22 @@
 
 Write taunt number in chat. Get aoe2 taunt
 
+## Usage
+
+Bot expects `DISCORD_TOKEN` environment variable to be set.
+
+```
+export DISCORD_TOKEN=XXXXXX
+```
+
+The token needs the appropiate permissions, specifically "message content" must
+be enabled in the developer console. See [this
+issue](https://github.com/bwmarrin/discordgo/issues/1270) for more information.
 
 
 ## Credits
 
-Code mosty copied from the [airhorn dicordgo
+Code mostly copied from the [airhorn dicordgo
 example](https://github.com/bwmarrin/discordgo/tree/master/examples/airhorn)
 
 Converted using:
