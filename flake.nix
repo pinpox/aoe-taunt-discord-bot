@@ -83,18 +83,20 @@
               wantedBy = [ "multi-user.target" ];
               after = [ "network.target" ];
               description = "Start the AoE II taunt bot";
+
+              script = ''
+                export DISCORD_TOKEN="$(cat ''${CREDENTIALS_DIRECTORY}/discord_token)"
+                ${pkgs.aoe-taunt-discord-bot}/bin/aoe-taunt-discord-bot
+              '';
+
               serviceConfig = {
                 LoadCredential = [ "discord_token:${cfg.discordTokenFile}" ];
 
-                ExecStartPre = "export DISCORD_TOKEN=$(cat $${CREDENTIALS_DIRECTORY}/discord_token)";
-
-
-
-                WorkingDirectory = pkgs.aoe-taunt-discord-bot;
+                WorkingDirectory = "${pkgs.aoe-taunt-discord-bot}/bin";
                 User = "aoe-taunt-discord-bot";
                 Group = "aoe-taunt-discord-bot";
                 DynamicUser = true;
-                ExecStart = "${pkgs.aoe-taunt-discord-bot}/bin/aoe-taunt-discord-bot";
+                # ExecStart = "${pkgs.aoe-taunt-discord-bot}/bin/aoe-taunt-discord-bot";
               };
             };
 
