@@ -16,6 +16,16 @@ The token needs the appropiate permissions, specifically "message content" must
 be enabled in the developer console. See [this
 issue](https://github.com/bwmarrin/discordgo/issues/1270) for more information.
 
+## NixOS
+
+If you are using NixOS just use the included module.
+
+```nix
+services.aoe-taunt-discord-bot = {
+  discordTokenFile = "/path/to/your/token";
+  enable = true;
+}
+```
 
 ## Credits
 

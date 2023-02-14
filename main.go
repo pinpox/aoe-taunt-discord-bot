@@ -26,8 +26,8 @@ func main() {
 		return
 	}
 
-	fmt.Println("Starting with token:")
-	fmt.Println(token)
+	// fmt.Println("Starting with token:")
+	// fmt.Println(token)
 
 	// Create a new Discord session using the provided bot token.
 	dg, err := discordgo.New("Bot " + token)
