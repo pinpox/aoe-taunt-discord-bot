@@ -1,0 +1,20 @@
+platform: linux/amd64
+clone:
+  git:
+    image: bash
+    commands:
+      - git init -b $CI_COMMIT_BRANCH
+      - git remote add origin $CI_REPO_CLONE_URL
+      - "git fetch --no-tags --depth=1 --filter=tree:0 origin +$CI_COMMIT_REF:"
+      - git reset --hard -q $CI_COMMIT_SHA
+      - git submodule update --init --recursive
+      - git lfs fetch
+pipeline:
+  check:
+    image: bash
+    commands:
+      - nix flake check
+  build:
+    image: bash
+    commands:
+      - nix build
