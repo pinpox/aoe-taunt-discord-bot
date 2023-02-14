@@ -22,16 +22,7 @@ func main() {
 	token = os.Getenv("DISCORD_TOKEN")
 
 	if token == "" {
-		fmt.Println("No token provided. Please run: airhorn -t <bot token>")
-		return
-	}
-
-	// Load the sound file.
-
-	err := loadSound("taunts/1.dca")
-	if err != nil {
-		fmt.Println("Error loading sound: ", err)
-		fmt.Println("Please copy $GOPATH/src/github.com/bwmarrin/examples/airhorn/airhorn.dca to this directory.")
+		fmt.Println("No token provided. Set the DISCORD_TOKEN environment variable")
 		return
 	}
 
@@ -62,7 +53,7 @@ func main() {
 	}
 
 	// Wait here until CTRL-C or other term signal is received.
-	fmt.Println("Airhorn is now running.  Press CTRL-C to exit.")
+	fmt.Println("Tauntbot is now running.  Press CTRL-C to exit.")
 	sc := make(chan os.Signal, 1)
 	signal.Notify(sc, syscall.SIGINT, syscall.SIGTERM, os.Interrupt)
 	<-sc
@@ -76,7 +67,7 @@ func main() {
 func ready(s *discordgo.Session, event *discordgo.Ready) {
 
 	// Set the playing status.
-	s.UpdateGameStatus(0, "!airhorn")
+	s.UpdateGameStatus(0, "AoE taunt number")
 }
 
 // This function will be called (due to AddHandler above) every time a new
@@ -150,7 +141,7 @@ func guildCreate(s *discordgo.Session, event *discordgo.GuildCreate) {
 
 	for _, channel := range event.Guild.Channels {
 		if channel.ID == event.Guild.ID {
-			_, _ = s.ChannelMessageSend(channel.ID, "Airhorn is ready! Type !airhorn while in a voice channel to play a sound.")
+			_, _ = s.ChannelMessageSend(channel.ID, "Tauntbot is ready! Type AoE taunt number while in a voice channel to play a sound.")
 			return
 		}
 	}
