@@ -1,5 +1,7 @@
 # Age of Empires II taunts Discord Bot
 
+[![status-badge](https://build.lounge.rocks/api/badges/pinpox/aoe-taunt-discord-bot/status.svg)](https://build.lounge.rocks/pinpox/aoe-taunt-discord-bot)
+
 Write taunt number in chat. Get aoe2 taunt
 
 ## Usage
