@@ -78,13 +78,18 @@
             # Service
             systemd.services.aoe-taunt-discord-bot = {
 
-              environment.DISCORD_TOKEN = "$(cat %d/discord_token)";
+              # environment.DISCORD_TOKEN = "$(cat %d/discord_token)";
 
               wantedBy = [ "multi-user.target" ];
               after = [ "network.target" ];
               description = "Start the AoE II taunt bot";
               serviceConfig = {
                 LoadCredential = [ "discord_token:${cfg.discordTokenFile}" ];
+
+                ExecStartPre = "export DISCORD_TOKEN=$(cat $${CREDENTIALS_DIRECTORY}/discord_token)";
+
+
+
                 WorkingDirectory = pkgs.aoe-taunt-discord-bot;
                 User = "aoe-taunt-discord-bot";
                 Group = "aoe-taunt-discord-bot";
