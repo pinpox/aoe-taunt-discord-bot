@@ -84,7 +84,7 @@
               after = [ "network.target" ];
               description = "Start the AoE II taunt bot";
               serviceConfig = {
-                LoadCredential = [ "discord_token:${cfg.discord_token_file}" ];
+                LoadCredential = [ "discord_token:${cfg.discordTokenFile}" ];
                 WorkingDirectory = pkgs.aoe-taunt-discord-bot;
                 User = "aoe-taunt-discord-bot";
                 Group = "aoe-taunt-discord-bot";
