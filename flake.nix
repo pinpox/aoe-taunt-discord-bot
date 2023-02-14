@@ -78,7 +78,7 @@
             # Service
             systemd.services.aoe-taunt-discord-bot = {
 
-              environment.DISCORD_TOKEN = "%d/discord_token";
+              environment.DISCORD_TOKEN = "$(cat %d/discord_token)";
 
               wantedBy = [ "multi-user.target" ];
               after = [ "network.target" ];
