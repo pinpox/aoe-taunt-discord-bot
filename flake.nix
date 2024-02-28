@@ -31,7 +31,7 @@
             pname = "aoe-taunt-discord-bot";
             version = "v1.0";
             src = ./.;
-            vendorSha256 = "sha256-XfFuOCT2BSEXSjPA1yxWSC2qSS58f8F59hqI9vId66w=";
+            vendorHash = "sha256-XfFuOCT2BSEXSjPA1yxWSC2qSS58f8F59hqI9vId66w=";
 
             installPhase = ''
               mkdir -p $out/bin
